@@ -1,11 +1,12 @@
 import { getHumeAccessToken } from "@/utils/getHumeAccessToken";
 import dynamic from "next/dynamic";
 
-const Chat = dynamic(() => import("@/components/Chat"), {
+const KiLanding = dynamic(() => import("@/components/KiLanding"), {
   ssr: false,
 });
 
 export default async function Page() {
+  // Get Hume access token
   const accessToken = await getHumeAccessToken();
 
   if (!accessToken) {
@@ -14,7 +15,7 @@ export default async function Page() {
 
   return (
     <div className={"grow flex flex-col"}>
-      <Chat accessToken={accessToken} />
+      <KiLanding accessToken={accessToken} />
     </div>
   );
 }
